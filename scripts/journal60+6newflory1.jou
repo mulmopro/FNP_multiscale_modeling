@@ -1,0 +1,57 @@
+file r-c-d "fr60+6br_prova.cas"
+
+define user-defined user-defined-memory 90
+
+define user-defined compiled-functions compile
+"libudf_c25_120"
+
+fr60mlmin.c
+AggBeTAcNi6modifturbmomnewflory1.c
+
+
+define/b-c/v-i/inlet1 n n y y y y "udf" "inlet_velocity_1::libudf_c25_120" n 0 n y 0.9999999999999 0.001 n y n y n y n y n y n y n y n y n y n y n y n y n y n y n y y y y y y y y y y y y y y y y y n 1 n 1 n 0 n 0 n 0 n 0 n 0 n 0.490254532 n 0.490254532 n 0.490254532 n 0.490254532 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 
+  
+define/b-c/v-i/inlet2 n n y y y y "udf" "inlet_velocity_1::libudf_c25_120" n 0 n y 0.9999999999999 0.001 n y n y n y n y n y n y n y n y n y n y n y n y n y n y n y y y y y y y y y y y y y y y y y n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 
+  
+define user-defined compiled-functions load "libudf_c25_120"
+
+solve set equations flow      n
+solve set equations ke        n
+solve set equations uds-0     n
+solve set equations uds-1     n
+solve set equations uds-2     n
+solve set equations uds-3     n
+solve set equations uds-4     n
+solve set equations uds-5     n
+solve set equations uds-6     n
+solve set equations uds-7     y
+solve set equations uds-8     y
+solve set equations uds-9     y
+solve set equations uds-10    y
+solve set equations uds-11    y
+solve set equations uds-12    y
+solve set equations uds-13    y
+solve set equations uds-14    y
+solve set under-relaxation uds-7          0.05
+solve set under-relaxation uds-8          0.05
+solve set under-relaxation uds-9          0.05
+solve set under-relaxation uds-10         0.05
+solve set under-relaxation uds-11         0.05
+solve set under-relaxation uds-12         0.05
+solve set under-relaxation uds-13         0.05
+solve set under-relaxation uds-14         0.05
+/solve/set/reporting-interval 50
+solve/monitors/surface set-monitor velinlet "Area-Weighted Average" velocity-magnitude inlet1 , no yes no 100
+solve/monitors/surface set-monitor raggio "Area-Weighted Average" udm-31 outlet , no yes no 50
+solve/monitors/surface set-monitor momento1 "Area-Weighted Average" udm-28 outlet , no yes no 50
+
+/file/auto-save/root-name "fr60+6_newflory1_part.dat"
+/file/auto-save data-frequency 10000
+it 50000
+file w-c-d "fr60+6newflory1.cas.gz" 
+
+exit
+y
+
+
+
